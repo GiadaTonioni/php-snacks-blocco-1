@@ -27,13 +27,44 @@
     ]      
 ];
 
-$flag_name = false;
-$flag_email = false;
-$flag_eta = false;
-
-if(isset($_GET['nome']) && isset($_GET['eta'])&& isset($_GET['email'])){
-    
-}
+$posts = [
+    '01/08/2015' => [
+        [
+            'title' => 'Post Sea',
+            'author' => 'Francesco Sabbia',
+            'text'  => 'The sea' 
+        ],
+        [
+            'title' => 'Post Mountain',
+            'author' => 'Giuseppe Alpen',
+            'text'  => 'The big Mountain' 
+        ],
+        [
+            'title' => 'Post Rome',
+            'author' => 'Laura dalla Chiesa',
+            'text'  => 'Rome to night' 
+        ]
+    ],
+    '05/10/2020' => [
+        [
+            'title' => 'Post Random',
+            'author' => 'Matteo Messina',
+            'text'  => 'The random' 
+        ]
+    ],
+    "10/10/2010" => [
+        [
+            'title' => 'Post Food',
+            'author' => 'Lorenzo Rovagnati',
+            'text'  => 'The cheescake' 
+        ],
+        [
+            'title' => 'Post in Air',
+            'author' => 'Vanesssa Pes',
+            'text'  => 'The Hot Air Balloon' 
+        ]
+    ],    
+];
 
 
 ?>
@@ -54,20 +85,27 @@ if(isset($_GET['nome']) && isset($_GET['eta'])&& isset($_GET['email'])){
     </ul>
     <hr>
     <h3>SNACK-2</h3>
-    <form action="index.php" method"GET">
+    <form action="index.php" method="GET">
         <input type="text" placeholder="Nome" name="nome">
         <input type="email" placeholder="email" name="email">
         <input type="number" placeholder="eta" name="eta">
         <button type="submit">Invia</button>
     </form>
-    <?php if(isset($_GET['nome'])) && isset($_GET['eta'] && isset ($_GET['email'])){?>
-	<?php if($flag_email && $flag_name && $flag_eta){
-		echo 'Accesso riuscito';
-	}
-	else{
-		echo 'Accesso negato';
-	}
-	<?php }?>
+    <hr>
+    <h3>SNACK-3</h3>
+    <ul>
+        <?php foreach($posts as key=>$post){ ?>
+        <li>
+            <?php echo $key; ?>
+            <ul>
+                <?php foreach($post as $item){ ?>
+                    <li><?php echo $item['title']."-".$item['author']."-".$item['text']; ?> </li>
+                <?php } ?>
+            </ul>
+        </li>
+        <?php } ?>
+    </ul>
+
 
 </body>
 </html>
